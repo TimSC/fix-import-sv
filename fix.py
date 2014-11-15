@@ -11,7 +11,7 @@ def CheckWays(objMap):
 
 		#print objId, way.attrib["version"]
 		if int(way.attrib["version"]) != 1: continue
-		if "user" not in way attrib or way.attrib["user"] != "TimSCStreetViewImport": continue
+		if "user" not in way.attrib or way.attrib["user"] != "TimSCStreetViewImport": continue
 		#print way.attrib
 
 		woodTagFound = False
@@ -52,7 +52,7 @@ def CheckRelation(objMap):
 
 		#print objId, way.attrib["version"]
 		if int(relation.attrib["version"]) != 1: continue
-		if "user" not in way attrib or relation.attrib["user"] != "TimSCStreetViewImport": continue
+		if "user" not in relation.attrib or relation.attrib["user"] != "TimSCStreetViewImport": continue
 		#print relation.attrib
 
 		woodTagFound = False
