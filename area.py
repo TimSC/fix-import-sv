@@ -1,4 +1,4 @@
-import chk, urlutil, StringIO
+import chk, urlutil, StringIO, sys
 from ostn02python import OSGB
 from ostn02python import OSTN02
 def FixSmallArea(lats, lons, username = None, password = None):
@@ -24,12 +24,19 @@ if __name__=="__main__":
 	#lats = [50.7595692, 50.7724678]	
 	#lons = [-3.7165585, -3.6989885]
 
+	gridCode = "SX"
+	if len(sys.argv) >= 2:
+		gridCode = sys.argv[1]
+
 	username = "mapping@sheerman-chase.org.uk" #raw_input("Username:")
 	password = raw_input("Password:")
 
-	xin, yin = OSGB.parse_grid("SX", 00000, 00000)
-	xin2, yin2 = OSGB.parse_grid("ST", 00000, 00000)
+	xin, yin = OSGB.parse_grid(gridCode, 00000, 00000)
+	#xin2, yin2 = OSGB.parse_grid("ST", 00000, 00000)
+	xin2 = xin + 100000
+	yin2 = yin + 100000
 
+	print "Start corner", gridCode, xin, yin
 
 	#print xin, yin
 	#print xin2, yin2
@@ -49,3 +56,5 @@ if __name__=="__main__":
 			print x, y, lats, lons
 			FixSmallArea(lats, lons, username=username, password=password)
 
+
+	print "All done!"
